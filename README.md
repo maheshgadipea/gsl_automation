@@ -1,6 +1,6 @@
 # GSL Compliance Engine
 
-> **System Architecture Specification — v21 (Final Reference-Model + Deterministic Audit Platform)**
+> **System Architecture Specification — v22 (Final Reference-Model + Exception-Aware Deterministic Audit Platform)**
 >
 > An enterprise compliance-testing platform for **1,500+ recurring regulatory and operational obligations**.
 > The platform uses a **one-time, Admin-guided obligation onboarding** process to build an approved,
@@ -78,10 +78,11 @@
 | 34 | SOFTEX test walkthrough |
 | 35 | Quarterly reuse / replay |
 | 36 | Governance and change management |
-| 37 | Implementation plan |
-| 38 | Definition of done |
-| 39 | Final architectural decisions |
-| 40 | Reference technology sources |
+| 37 | Runtime anomaly / exceptional-scenario handling |
+| 38 | Implementation plan |
+| 39 | Definition of done |
+| 40 | Final architectural decisions |
+| 41 | Reference technology sources |
 
 ---
 
@@ -1303,6 +1304,68 @@ else:
 
 The condition must be deterministic and part of the approved model.
 
+## 16.3 Runtime anomaly / exceptional-scenario gate
+
+The approved reference model defines the normal control path. It must **not** be silently mutated when a rare case falls outside that model.
+
+```text
+APPROVED MODEL
+     ↓
+NORMAL AUDIT EVALUATION
+     ↓
+Does the run remain explainable under the approved model?
+     ├── YES → continue
+     └── NO  → STOP AUDIT
+                ↓
+        create RUN_EXCEPTION
+                ↓
+        notify BU + Admin
+                ↓
+        request targeted additional evidence / valid information
+                ↓
+        validate new evidence
+                ↓
+        Admin resolves the exception
+                ├── RESUME RUN
+                └── CLOSE AS INDETERMINATE / FINDING
+```
+
+### Runtime exception rules
+
+1. A detected anomaly never edits the active Compliance Pack or reference model.
+2. The run enters `PAUSED_EXCEPTION` and no further assertion is executed until the exception gate is resolved.
+3. BU receives the evidence request explaining what condition was not satisfied or could not be explained.
+4. Admin receives the same exception with the control context and is responsible for resolution/approval.
+5. Additional evidence collected for the one run is tagged `RUN_EXCEPTION_EVIDENCE` and does not become a future requirement automatically.
+6. If the same exception pattern recurs and is confirmed as a genuine control requirement, Admin starts a new model revision through the onboarding chatbot; the prior revision remains immutable.
+7. The system never loops indefinitely. A configurable escalation / maximum clarification policy moves unresolved exceptions to human review and then to `INDETERMINATE` or the appropriate audit finding state.
+
+### Mental model
+
+```text
+5,000 normal runs
+       │
+       ├──────── 4,999 → follow approved model → continue audit
+       │
+       └────────     1 → unusual / unexplained
+                           ↓
+                        pause
+                           ↓
+                  notify BU + Admin
+                           ↓
+                 request extra evidence
+                           ↓
+                      validate
+                      /      \
+                     /        \
+               explained    unresolved
+                  │             │
+                  ▼             ▼
+              resume       close / INDET
+```
+
+This allows a mature obligation model to cover the common population without requiring onboarding to predict every possible rare exception.
+
 ---
 
 # 17. Document classification and role binding
@@ -1846,9 +1909,17 @@ completeness gate
       ↓
    assertion engine
       ↓
-   step results / trace
-      ↓
-   overall verdict
+   unusual / unexplained condition?
+      ├── no → step results / trace → verdict
+      └── yes → PAUSE_EXCEPTION
+                 ↓
+           notify BU + Admin
+                 ↓
+           request targeted evidence
+                 ↓
+           validate / resolve
+                 ↓
+           resume or close
 ```
 
 ## 23.3 Full platform picture
@@ -1998,6 +2069,46 @@ RUN + RULE + FACT + MASTER
 The schema is deliberately optimized around a small number of durable core objects.
 
 ## Core tables
+
+### Runtime exception tables
+
+`run_exception` captures a one-run anomaly without mutating the approved obligation model.
+
+```text
+run_exception
+-------------
+id
+run_id
+exception_code
+trigger_assertion_id
+description
+status                 -- OPEN / EVIDENCE_REQUESTED / RESOLVED / CLOSED
+severity
+notified_bu_at
+notified_admin_at
+resolved_by
+resolved_at
+decision
+created_at
+updated_at
+```
+
+`run_exception_evidence` links additional one-off evidence submitted to resolve that exception.
+
+```text
+run_exception_evidence
+----------------------
+id
+exception_id
+document_id
+role_id
+accepted
+reason
+created_at
+```
+
+These tables are run-scoped. They must never rewrite an ACTIVE pack revision or create a permanent document requirement implicitly.
+
 
 ```text
 archetype
@@ -2670,6 +2781,8 @@ GET  /bu/runs/{run_id}/completeness
 POST /bu/runs/{run_id}/lock
 POST /bu/runs/{run_id}/audit
 GET  /bu/runs/{run_id}/results
+GET  /bu/runs/{run_id}/exceptions
+POST /bu/runs/{run_id}/exceptions/{exception_id}/evidence
 ```
 
 ## Internal services
@@ -2685,6 +2798,8 @@ Normalizer
 MasterLifecycleService
 CompletenessService
 AssertionEngine
+AnomalyDetectionService
+RunExceptionService
 AuditTraceService
 ReportService
 ```
@@ -3209,7 +3324,7 @@ Admin approval is recorded
 
 ---
 
-# 37. Implementation plan
+# 38. Implementation plan
 
 ## Phase 1 — Foundation
 
@@ -3283,7 +3398,7 @@ Admin approval is recorded
 
 ---
 
-# 38. Definition of done
+# 39. Definition of done
 
 The platform is production-ready only when all of the following are true.
 
@@ -3302,14 +3417,17 @@ The platform is production-ready only when all of the following are true.
 - Side-B is run/period scoped;
 - document classification is governed;
 - role binding is explicit;
-- evidence completeness blocks audit when incomplete.
+- evidence completeness blocks audit when incomplete;
+- unusual/unexplained runtime conditions pause the run and notify BU + Admin;
+- run-specific exception evidence never mutates the approved model.
 
 ## Rules
 
 - workpaper steps compile into structured assertions;
 - assertions have typed dependencies;
 - primitives are allow-listed;
-- unsupported or unsafe expressions become INDETERMINATE.
+- unsupported or unsafe expressions become INDETERMINATE;
+- anomaly/exception conditions cannot silently change the active model.
 
 ## AI
 
@@ -3340,7 +3458,7 @@ The platform is production-ready only when all of the following are true.
 
 ---
 
-# 39. Final architectural decisions
+# 40. Final architectural decisions
 
 ## 39.1 Primary model
 
@@ -3412,13 +3530,17 @@ COMPLETE?
   └── YES → LOCK → AUDIT
 ```
 
-## 39.9 Final one-line architecture
+## 40.9 Runtime exception decision
+
+Rare cases are handled at run scope, not by contaminating the common model. The normal model continues to serve the large majority of runs; unexplained exceptions pause the current run, notify both BU and Admin, request targeted evidence, and require resolution before resumption. Repeated exceptions can later be promoted into a new approved model revision.
+
+## 40.10 Final one-line architecture
 
 > **Teach each obligation once from its real workpaper and representative evidence; approve a versioned reference model; refresh Side-A truth and ingest new Side-B evidence every period; then execute the same deterministic assertions against the new facts.**
 
 ---
 
-# 40. Reference technology sources
+# 41. Reference technology sources
 
 The following official/current documentation was used to validate the technology recommendations in this version:
 
@@ -3488,11 +3610,9 @@ RESOLVE HISTORICAL SIDE-A MASTER
       ↓
 EXECUTE ASSERTIONS
       ↓
-STORE TRACE
-      ↓
-ROLLUP
-      ↓
-VERDICT
+UNUSUAL / UNEXPLAINED CONDITION?
+      ├── NO → STORE TRACE → ROLLUP → VERDICT
+      └── YES → PAUSE + NOTIFY BU/ADMIN → REQUEST EVIDENCE → RESOLVE → RESUME/CLOSE
 ```
 
 ## A.3 First-time vs future quarter
@@ -3510,6 +3630,8 @@ VERDICT
 | Audit execution | After model approval | Every run |
 | New run ID | Yes | Yes |
 | New Side-B facts | Reference run + actual run | Yes |
+| Run-specific exceptions | Possible | Possible when unusual case occurs |
+| Model revision from exception | Not automatic | Only if Admin promotes recurring exception into new revision |
 
 ---
 
@@ -3591,6 +3713,9 @@ The system's scalability comes from **reuse of approved obligation models, regis
 and deterministic execution infrastructure**—not from forcing every obligation into the same template.
 
 The first real occurrence of an obligation is where the platform learns and confirms the operational model.
-Every later period is a controlled **data refresh + evidence collection + deterministic replay** of that approved model.
+Every later period is a controlled **Side-A refresh + Side-B evidence collection + deterministic replay** of that approved model.
+If a rare run falls outside the approved model, the system **pauses instead of guessing**, notifies BU and Admin,
+requests targeted evidence, and either resumes after resolution or closes safely as unresolved/INDETERMINATE.
+A recurring exception can be promoted into a new immutable model revision through the same governed onboarding process.
 
 That is the intended production architecture.
