@@ -1,0 +1,206 @@
+<mxfile host="Electron" agent="Claude">
+  <diagram id="compliance-v9" name="Compliance Testing Automation — Structured Executive Architecture">
+    <mxGraphModel dx="4070" dy="2183" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2100" pageHeight="1700" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" parent="1" style="text;html=1;strokeColor=none;fillColor=none;fontSize=30;fontStyle=1;fontColor=#17212B;align=center;verticalAlign=middle;" value="AI-POWERED COMPLIANCE TESTING AUTOMATION" vertex="1">
+          <mxGeometry height="46" width="1930" x="40" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="subtitle" parent="1" style="text;html=1;strokeColor=none;fillColor=none;fontSize=13;fontStyle=1;fontColor=#667085;align=center;verticalAlign=middle;" value="DESIGN ONCE  →  APPROVE  →  COLLECT TWO EVIDENCE STREAMS  →  EXTRACT  →  TEST  →  REPORT" vertex="1">
+          <mxGeometry height="26" width="1930" x="40" y="72" as="geometry" />
+        </mxCell>
+        <mxCell id="phase1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F6FBF3;strokeColor=#5B8C51;strokeWidth=2;" value="" vertex="1">
+          <mxGeometry height="1255" width="760" x="40" y="125" as="geometry" />
+        </mxCell>
+        <mxCell id="p1head" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E4F1DA;strokeColor=none;fontSize=20;fontStyle=1;fontColor=#234D20;align=center;verticalAlign=middle;" value="PHASE 1  |  OBLIGATION ONBOARDING" vertex="1">
+          <mxGeometry height="58" width="760" x="40" y="125" as="geometry" />
+        </mxCell>
+        <mxCell id="p1sub" parent="1" style="text;html=1;strokeColor=none;fillColor=none;fontSize=13;fontColor=#4D6949;align=center;verticalAlign=middle;" value="Turn obligation context into an approved, versioned execution blueprint" vertex="1">
+          <mxGeometry height="26" width="710" x="65" y="193" as="geometry" />
+        </mxCell>
+        <mxCell id="wp" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#79A36D;fontSize=13;fontStyle=1;spacing=10;align=center;verticalAlign=middle;" value="WORK PAPER / OBLIGATION CONTEXT&#xa;&#xa;Metric criteria&#xa;Business context&#xa;Regulation / policy&#xa;Verification intent" vertex="1">
+          <mxGeometry height="235" width="220" x="65" y="270" as="geometry" />
+        </mxCell>
+        <mxCell id="a1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#79A36D;fontSize=13;fontStyle=1;spacing=10;align=center;verticalAlign=middle;" value="AGENT 1&#xa;ASSERTIONS + DOCUMENT RULES&#xa;&#xa;Define metrics / assertions&#xa;Identify evidence categories&#xa;Create contracts for:&#xa;EXPECTED EVIDENCE&#xa;SUPPORTING EVIDENCE" vertex="1">
+          <mxGeometry height="235" width="220" x="310" y="270" as="geometry" />
+        </mxCell>
+        <mxCell id="a2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#79A36D;fontSize=13;fontStyle=1;spacing=10;align=center;verticalAlign=middle;" value="AGENT 2&#xa;REQUIRED CANONICAL FIELDS&#xa;&#xa;Identify minimum fields only&#xa;Map fields to assertions&#xa;Assign source side for each field" vertex="1">
+          <mxGeometry height="235" width="220" x="555" y="270" as="geometry" />
+        </mxCell>
+        <mxCell id="a3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#79A36D;fontSize=13;fontStyle=1;spacing=10;align=center;verticalAlign=middle;" value="AGENT 3&#xa;BLUEPRINT CREATOR&#xa;&#xa;Bind assertions + rules + document types + canonical fields&#xa;&#xa;Create one blueprint containing both evidence contracts" vertex="1">
+          <mxGeometry height="235" width="340" x="65" y="600" as="geometry" />
+        </mxCell>
+        <mxCell id="approval" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5EEFF;strokeColor=#8B68B9;strokeWidth=2;fontSize=13;fontStyle=1;spacing=10;align=center;verticalAlign=middle;" value="HUMAN / ADMIN APPROVAL&#xa;&#xa;Review → Correct → Approve&#xa;&#xa;Approved version becomes the executable baseline" vertex="1">
+          <mxGeometry height="235" width="340" x="435" y="600" as="geometry" />
+        </mxCell>
+        <mxCell id="blueprint" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E6;strokeColor=#5B8C51;strokeWidth=2.5;fontSize=13;fontStyle=1;spacing=10;align=center;verticalAlign=middle;" value="APPROVED BLUEPRINT  |  SYSTEM OF RECORD&#xa;&#xa;EXPECTED EVIDENCE: document rules + fields&#xa;SUPPORTING EVIDENCE: document rules + fields&#xa;ASSERTIONS: metrics + deterministic test logic&#xa;GOVERNANCE: version • hash • approval metadata" vertex="1">
+          <mxGeometry height="250" width="710" x="65" y="940" as="geometry" />
+        </mxCell>
+        <mxCell id="p1note" parent="1" style="text;html=1;strokeColor=none;fillColor=none;fontSize=12;fontStyle=1;fontColor=#4D6949;align=center;verticalAlign=middle;" value="Reusable across every audit case for this obligation" vertex="1">
+          <mxGeometry height="26" width="710" x="65" y="1240" as="geometry" />
+        </mxCell>
+        <mxCell id="p1e1" edge="1" parent="1" source="wp" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=block;strokeWidth=2;" target="a1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p1e2" edge="1" parent="1" source="a1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=block;strokeWidth=2;" target="a2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p1e3" edge="1" parent="1" source="a2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=block;strokeWidth=2;fontSize=10;labelBackgroundColor=#FFFFFF;" target="a3" value="Inputs to blueprint">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="665" y="552" />
+              <mxPoint x="235" y="552" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="p1e4" edge="1" parent="1" source="a3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=block;strokeWidth=2;" target="approval">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p1e5" edge="1" parent="1" source="approval" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.76;entryY=0;entryDx=0;entryDy=0;endArrow=block;strokeWidth=2;fontSize=10;labelBackgroundColor=#FFFFFF;" target="blueprint" value="APPROVED">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="phase2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F4F8FF;strokeColor=#4F81BD;strokeWidth=2;" value="" vertex="1">
+          <mxGeometry height="1255" width="1140" x="830" y="125" as="geometry" />
+        </mxCell>
+        <mxCell id="p2head" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E5EFFD;strokeColor=none;fontSize=20;fontStyle=1;fontColor=#173A66;align=center;verticalAlign=middle;" value="PHASE 2  |  COMPLIANCE AUDITING" vertex="1">
+          <mxGeometry height="58" width="1140" x="830" y="125" as="geometry" />
+        </mxCell>
+        <mxCell id="p2sub" parent="1" style="text;html=1;strokeColor=none;fillColor=none;fontSize=13;fontColor=#4D6282;align=center;verticalAlign=middle;" value="Two evidence owners work independently; the actual audit happens only after both evidence streams are ready" vertex="1">
+          <mxGeometry height="26" width="1090" x="855" y="193" as="geometry" />
+        </mxCell>
+        <mxCell id="start" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#6C8DB5;fontSize=13;fontStyle=1;spacing=10;align=center;verticalAlign=middle;" value="AUDIT CASE START&#xa;&#xa;Obligation + Case ID&#xa;Load approved blueprint&#xa;Open two evidence tracks" vertex="1">
+          <mxGeometry height="120" width="320" x="1077" y="265" as="geometry" />
+        </mxCell>
+        <mxCell id="adminLane" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EDF6FF;strokeColor=#6C8DB5;strokeWidth=1.5;fontSize=15;fontStyle=1;fontColor=#1D4D73;align=center;verticalAlign=top;spacingTop=12;" value="A  |  ADMIN / CONTROL-SIDE EVIDENCE" vertex="1">
+          <mxGeometry height="210" width="365" x="855" y="435" as="geometry" />
+        </mxCell>
+        <mxCell id="admin" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#6C8DB5;fontSize=13;fontStyle=1;spacing=8;align=center;verticalAlign=middle;" value="Admin provides expected / control evidence&#xa;&#xa;Evidence documents&#xa;Fact values / updates&#xa;Blueprint-required fields" vertex="1">
+          <mxGeometry height="130" width="325" x="875" y="495" as="geometry" />
+        </mxCell>
+        <mxCell id="buLane" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EEF9F0;strokeColor=#6A9B6E;strokeWidth=1.5;fontSize=15;fontStyle=1;fontColor=#24572A;align=center;verticalAlign=top;spacingTop=12;" value="B  |  BU / BUSINESS SUPPORTING EVIDENCE" vertex="1">
+          <mxGeometry height="210" width="365" x="1255" y="435" as="geometry" />
+        </mxCell>
+        <mxCell id="bu" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#6A9B6E;fontSize=13;fontStyle=1;spacing=8;align=center;verticalAlign=middle;" value="BU uploads supporting documents&#xa;&#xa;Case-specific records&#xa;Supporting evidence&#xa;Blueprint-required fields" vertex="1">
+          <mxGeometry height="130" width="325" x="1275" y="495" as="geometry" />
+        </mxCell>
+        <mxCell id="ready" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FFF7E6;strokeColor=#C28A28;strokeWidth=2;fontSize=14;fontStyle=1;align=center;verticalAlign=middle;" value="BOTH EVIDENCE&#xa;STREAMS READY?" vertex="1">
+          <mxGeometry height="150" width="320" x="1077" y="700" as="geometry" />
+        </mxCell>
+        <mxCell id="hold" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF0F0;strokeColor=#C45A5A;strokeWidth=2;fontSize=13;fontStyle=1;spacing=8;align=center;verticalAlign=middle;" value="ON HOLD&#xa;&#xa;Missing evidence on either side&#xa;Notify responsible owner&#xa;Request information&#xa;Resume after supplied" vertex="1">
+          <mxGeometry height="150" width="290" x="1655" y="700" as="geometry" />
+        </mxCell>
+        <mxCell id="requestQueue" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF8F8;strokeColor=#C45A5A;strokeWidth=1.5;fontSize=11;fontStyle=1;fontColor=#8B3E3E;align=center;verticalAlign=middle;spacing=8;" value="EVIDENCE REQUEST / RESUME QUEUE&#xa;&#xa;Route missing requirement to the responsible owner" vertex="1">
+          <mxGeometry height="110" width="290" x="1655" y="900" as="geometry" />
+        </mxCell>
+        <mxCell id="extractTitle" parent="1" style="text;html=1;strokeColor=none;fillColor=none;fontSize=13;fontStyle=1;fontColor=#355B78;align=center;verticalAlign=middle;" value="TARGETED EXTRACTION  |  ONLY FIELDS DEFINED BY THE BLUEPRINT" vertex="1">
+          <mxGeometry height="30" width="460" x="1008" y="898" as="geometry" />
+        </mxCell>
+        <mxCell id="adminExtract" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#6C8DB5;fontSize=13;fontStyle=1;spacing=8;align=center;verticalAlign=middle;" value="ADMIN EVIDENCE&#xa;EXTRACTION&#xa;&#xa;OCR / parsing if needed&#xa;Canonical fields + confidence&#xa;Source / document trace" vertex="1">
+          <mxGeometry height="155" width="355" x="875" y="945" as="geometry" />
+        </mxCell>
+        <mxCell id="buExtract" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#6A9B6E;fontSize=13;fontStyle=1;spacing=8;align=center;verticalAlign=middle;" value="BU SUPPORTING EVIDENCE&#xa;EXTRACTION&#xa;&#xa;OCR / parsing if needed&#xa;Canonical fields + confidence&#xa;Source / document trace" vertex="1">
+          <mxGeometry height="155" width="355" x="1245" y="945" as="geometry" />
+        </mxCell>
+        <mxCell id="engine" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E6;strokeColor=#C47A2C;strokeWidth=2.5;fontSize=13;fontStyle=1;spacing=10;align=center;verticalAlign=middle;" value="DETERMINISTIC COMPLIANCE ENGINE  |  NO AI DECISIONING&#xa;&#xa;Compare Admin / Control-side facts ↔ BU Supporting Evidence facts&#xa;Evaluate obligation assertions / metrics&#xa;&#xa;Completeness • Correctness / Accuracy • Authorization • Timeliness" vertex="1">
+          <mxGeometry height="175" width="765" x="855" y="1165" as="geometry" />
+        </mxCell>
+        <mxCell id="result" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EAF6EA;strokeColor=#5B8C51;strokeWidth=2.5;fontSize=13;fontStyle=1;spacing=8;align=center;verticalAlign=middle;" value="FINAL AUDIT RESULT&#xa;&#xa;PASS / FAIL / PARTIAL / N/A&#xa;&#xa;Exceptions + evidence trace links&#xa;Explainable audit report + remediation" vertex="1">
+          <mxGeometry height="145" width="290" x="1655" y="1180" as="geometry" />
+        </mxCell>
+        <mxCell id="p2e1" edge="1" parent="1" source="blueprint" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=block;strokeWidth=3;strokeColor=#234D68;fontSize=11;fontStyle=1;labelBackgroundColor=#FFFFFF;" target="start" value="Approved blueprint">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="815" y="1002" />
+              <mxPoint x="815" y="240" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="p2e2" edge="1" parent="1" source="start" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=block;strokeWidth=2;strokeColor=#6C8DB5;" target="adminLane">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1157" y="410" />
+              <mxPoint x="1037" y="410" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="p2e3" edge="1" parent="1" source="start" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=block;strokeWidth=2;strokeColor=#6A9B6E;" target="buLane">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1317" y="410" />
+              <mxPoint x="1437" y="410" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="p2e4" edge="1" parent="1" source="adminLane" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=block;strokeWidth=2;strokeColor=#6C8DB5;" target="ready">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1037" y="672" />
+              <mxPoint x="1237" y="672" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="p2e5" edge="1" parent="1" source="buLane" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=block;strokeWidth=2;strokeColor=#6A9B6E;" target="ready">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1437" y="672" />
+              <mxPoint x="1237" y="672" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="p2e6" edge="1" parent="1" source="ready" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=block;strokeWidth=2;strokeColor=#C45A5A;fontColor=#C45A5A;fontStyle=1;labelBackgroundColor=#FFFFFF;" target="hold" value="NO">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p2e7" edge="1" parent="1" source="hold" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=block;dashed=1;strokeWidth=2;strokeColor=#C45A5A;fontColor=#C45A5A;fontSize=9;labelBackgroundColor=#FFFFFF;" target="requestQueue" value="Missing evidence">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p2e8" edge="1" parent="1" source="ready" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.08;entryY=0;entryDx=0;entryDy=0;endArrow=block;strokeWidth=2;strokeColor=#5B8C51;fontColor=#5B8C51;fontStyle=1;labelBackgroundColor=#FFFFFF;" target="adminExtract" value="YES">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1237" y="875" />
+              <mxPoint x="903" y="875" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="p2e9" edge="1" parent="1" source="ready" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.92;entryY=0;entryDx=0;entryDy=0;endArrow=block;strokeWidth=2;strokeColor=#5B8C51;fontColor=#5B8C51;fontStyle=1;labelBackgroundColor=#FFFFFF;" target="buExtract" value="YES">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1237" y="875" />
+              <mxPoint x="1572" y="875" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="p2e10" edge="1" parent="1" source="adminExtract" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.258;entryY=0;entryDx=0;entryDy=0;endArrow=block;strokeWidth=2;strokeColor=#6C8DB5;" target="engine">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p2e11" edge="1" parent="1" source="buExtract" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.742;entryY=0;entryDx=0;entryDy=0;endArrow=block;strokeWidth=2;strokeColor=#6A9B6E;" target="engine">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p2e12" edge="1" parent="1" source="engine" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=block;strokeWidth=2;fontSize=10;labelBackgroundColor=#FFFFFF;" target="result" value="Verdict">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="gov" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F4F0FF;strokeColor=#8064A2;strokeWidth=2;fontSize=17;fontStyle=1;fontColor=#4B3C64;align=center;verticalAlign=middle;" value="CROSS-CUTTING GOVERNANCE &amp; OPERATIONS" vertex="1">
+          <mxGeometry height="56" width="1930" x="40" y="1430" as="geometry" />
+        </mxCell>
+        <mxCell id="gov1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#B7A8D1;fontSize=11;fontStyle=1;align=center;verticalAlign=middle;spacing=6;" value="AUDIT LOGGING &amp; PROVENANCE&#xa;Who / What / When / How&#xa;Prompt • model • extractor hashes" vertex="1">
+          <mxGeometry height="115" width="300" x="40" y="1520" as="geometry" />
+        </mxCell>
+        <mxCell id="gov2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#B7A8D1;fontSize=11;fontStyle=1;align=center;verticalAlign=middle;spacing=6;" value="MONITORING &amp; OBSERVABILITY&#xa;Run status • failures • latency&#xa;Health • SLA • error rates" vertex="1">
+          <mxGeometry height="115" width="300" x="366" y="1520" as="geometry" />
+        </mxCell>
+        <mxCell id="gov3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#B7A8D1;fontSize=11;fontStyle=1;align=center;verticalAlign=middle;spacing=6;" value="IMMUTABLE PROVENANCE&#xa;WORM / append-only storage&#xa;Blueprint + audit history" vertex="1">
+          <mxGeometry height="115" width="300" x="692" y="1520" as="geometry" />
+        </mxCell>
+        <mxCell id="gov4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#B7A8D1;fontSize=11;fontStyle=1;align=center;verticalAlign=middle;spacing=6;" value="HUMAN OVERSIGHT&#xa;Admin / SME approval&#xa;Controlled re-run / override" vertex="1">
+          <mxGeometry height="115" width="300" x="1018" y="1520" as="geometry" />
+        </mxCell>
+        <mxCell id="gov5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#B7A8D1;fontSize=11;fontStyle=1;align=center;verticalAlign=middle;spacing=6;" value="SECURITY &amp; ACCESS&#xa;RBAC / ABAC • encryption&#xa;PII controls • data residency" vertex="1">
+          <mxGeometry height="115" width="300" x="1344" y="1520" as="geometry" />
+        </mxCell>
+        <mxCell id="gov6" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#B7A8D1;fontSize=11;fontStyle=1;align=center;verticalAlign=middle;spacing=6;" value="NOTIFICATIONS &amp; ESCALATIONS&#xa;Missing evidence alerts&#xa;SLA breaches • action tracking" vertex="1">
+          <mxGeometry height="115" width="300" x="1670" y="1520" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
